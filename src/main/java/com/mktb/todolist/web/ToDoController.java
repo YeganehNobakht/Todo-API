@@ -1,12 +1,11 @@
 package com.mktb.todolist.web;
 
 import com.mktb.todolist.dto.Response;
+import com.mktb.todolist.dto.ToDoDto;
 import com.mktb.todolist.service.ToDoListService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author yeganeh
@@ -25,5 +24,10 @@ public class ToDoController {
     @GetMapping("all" )
     public ResponseEntity<Object> getAllToDoList(){
         return new ResponseEntity<>(toDoListService.getAllToDoList(), HttpStatus.OK) ;
+    }
+
+    @PostMapping("/create")
+    public void createToDo(@RequestBody ToDoDto toDoDto){
+        toDoListService.createToDo(toDoDto);
     }
 }

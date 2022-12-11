@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface ToDoListService {
     List<ToDoDto> getAllToDoList();
+
+    void createToDo(ToDoDto toDoDto);
 }

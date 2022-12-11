@@ -29,4 +29,9 @@ public class ToDoListServiceImpl implements ToDoListService {
         return todolist.stream().map(todo -> toDoMapper.toDoToToDoDto(todo)).collect(Collectors.toList());
 
     }
+
+    @Override
+    public void createToDo(ToDoDto toDoDto) {
+        toDoRepository.save(toDoMapper.toDoDtoToToDo(toDoDto));
+    }
 }
