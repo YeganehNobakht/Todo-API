@@ -7,6 +7,7 @@ import com.mktb.todolist.service.mapper.ToDoMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -33,5 +34,28 @@ public class ToDoListServiceImpl implements ToDoListService {
     @Override
     public void createToDo(ToDoDto toDoDto) {
         toDoRepository.save(toDoMapper.toDoDtoToToDo(toDoDto));
+    }
+
+    @Override
+    public ToDoDto updateToDo(ToDoDto toDoDto) throws Exception {
+        ToDo findById = findById(toDoDto.getId());
+        ToDo toDoInput = toDoMapper.toDoDtoToToDo(toDoDto);
+        ToDo toDoUpdated = toDoRepository.save(toDoInput);
+
+        return toDoMapper.toDoToToDoDto(toDoUpdated);
+    }
+
+    @Override
+    public void deleteToDo(Integer id) throws Exception {
+        ToDo byId = findById(id);
+        toDoRepository.delete(byId);
+    }
+
+
+    private ToDo findById(Integer id) throws Exception {
+        Optional<ToDo> todo = toDoRepository.findById(id);
+        if (todo.isPresent()) {
+            return todo.get();
+        } else throw new Exception("Todo not found");
     }
 }

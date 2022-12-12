@@ -30,4 +30,16 @@ public class ToDoController {
     public void createToDo(@RequestBody ToDoDto toDoDto){
         toDoListService.createToDo(toDoDto);
     }
+
+    @PostMapping("/update")
+    public ToDoDto updateToDo(@RequestBody ToDoDto toDoDto) throws Exception {
+        return toDoListService.updateToDo(toDoDto);
+    }
+
+    @PostMapping("/delete/{id}")
+    public void deleteToDo(@PathVariable Integer id) throws Exception {
+        toDoListService.deleteToDo(id);
+    }
+
+
 }

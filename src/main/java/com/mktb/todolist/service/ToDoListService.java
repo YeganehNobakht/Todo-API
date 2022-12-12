@@ -12,4 +12,8 @@ public interface ToDoListService {
     List<ToDoDto> getAllToDoList();
 
     void createToDo(ToDoDto toDoDto);
+
+    ToDoDto updateToDo(ToDoDto toDoDto) throws Exception;
+
+    void deleteToDo(Integer id) throws Exception;
 }
