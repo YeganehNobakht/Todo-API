@@ -3,6 +3,7 @@ package com.mktb.todolist.service;
 import com.mktb.todolist.data.model.ToDo;
 import com.mktb.todolist.data.repository.ToDoRepository;
 import com.mktb.todolist.dto.ToDoDto;
+import com.mktb.todolist.exceptions.ToDoException;
 import com.mktb.todolist.service.mapper.ToDoMapper;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +57,6 @@ public class ToDoListServiceImpl implements ToDoListService {
         Optional<ToDo> todo = toDoRepository.findById(id);
         if (todo.isPresent()) {
             return todo.get();
-        } else throw new Exception("Todo not found");
+        } else throw new ToDoException("Todo not found");
     }
 }

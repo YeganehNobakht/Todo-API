@@ -9,9 +9,21 @@ import lombok.NoArgsConstructor;
  * @created 11/12/2022 - 3:11 PM
  */
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class Response {
-    private Integer errorCode;
     private String errorDescription;
+
+    public Response(String errorDescription) {
+        this.errorDescription = errorDescription;
+    }
+
+
+
+    public String getErrorDescription() {
+        return errorDescription;
+    }
+
+    public Response setErrorDescription(String errorDescription) {
+        this.errorDescription = errorDescription;
+        return this;
+    }
 }
