@@ -11,4 +11,21 @@ public class ToDoException extends Exception{
     public ToDoException(String message) {
         this.message = message;
     }
+
+    public Integer getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(Integer errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

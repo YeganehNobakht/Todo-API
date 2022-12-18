@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
+@CrossOrigin
 public class ToDoController {
 
     private ToDoListService toDoListService;
@@ -21,7 +22,7 @@ public class ToDoController {
         this.toDoListService = toDoListService;
     }
 
-    @GetMapping("all" )
+    @GetMapping("/all" )
     public ResponseEntity<Object> getAllToDoList(){
         return new ResponseEntity<>(toDoListService.getAllToDoList(), HttpStatus.OK) ;
     }
@@ -31,12 +32,12 @@ public class ToDoController {
         toDoListService.createToDo(toDoDto);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ToDoDto updateToDo(@RequestBody ToDoDto toDoDto) throws Exception {
         return toDoListService.updateToDo(toDoDto);
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteToDo(@PathVariable Integer id) throws Exception {
         toDoListService.deleteToDo(id);
     }

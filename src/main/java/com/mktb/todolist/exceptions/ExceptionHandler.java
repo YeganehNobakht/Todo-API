@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler({ToDoException.class,Exception.class})
-    public Response didehBankExceptionExceptionHandler(Exception e) {
+    public Response todoExceptionHandler(ToDoException e) {
         return new Response(e.getMessage());
     }
+//    @org.springframework.web.bind.annotation.ExceptionHandler({Exception.class})
+//    public Response exceptionHandler(Exception e) {
+//        return new Response(e.getMessage());
+//    }
 }
